@@ -70,8 +70,8 @@ pipeline {
             steps {
                 script {
                     withCredentials([
-                        string(credentialsId: 'aws-access', variable: 'AWS_ACCESS_KEY_ID'),
-                        string(credentialsId: 'aws-secret', variable: 'AWS_SECRET_ACCESS_KEY')
+                        string(credentialsId: 'AWS_Access_key', variable: 'AWS_ACCESS_KEY_ID'),
+                        string(credentialsId: 'AWS_Secret_key', variable: 'AWS_SECRET_ACCESS_KEY')
                     ]) {
                         sh '''
                             export AWS_DEFAULT_REGION=ap-south-1
