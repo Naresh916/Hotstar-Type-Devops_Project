@@ -15,7 +15,7 @@ spec:
         app: hotstar
     spec:
       containers:
-      - name: netflix
+      - name: hotstar
         image: naresh9163/hotstar:latest
         ports:
         - containerPort: 80
