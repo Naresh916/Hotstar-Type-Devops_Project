@@ -12,12 +12,15 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
+  // Handle search from SearchBar
   const handleSearch = async (query) => {
+    if (!query) return;
+
     const res = await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`
     );
     const data = await res.json();
-    setSearchResults(data.results);
+    setSearchResults(data.results || []);
   };
 
   return (
@@ -26,15 +29,17 @@ function App() {
       <Banner />
       <SearchBar onSearch={handleSearch} />
 
+      {/* Search Results Section */}
       {searchResults.length > 0 && (
         <Row
           title="Search Results"
           fetchUrl=""
-          onMovieClick={setSelectedMovie}
           moviesOverride={searchResults}
+          onMovieClick={setSelectedMovie}
         />
       )}
 
+      {/* Categories (Genre Rows) */}
       <Row
         title="Popular Movies"
         fetchUrl={`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`}
@@ -59,6 +64,19 @@ function App() {
         onMovieClick={setSelectedMovie}
       />
 
+      <Row
+        title="Animation"
+        fetchUrl={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=16`}
+        onMovieClick={setSelectedMovie}
+      />
+
+      <Row
+        title="Adventure"
+        fetchUrl={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=12`}
+        onMovieClick={setSelectedMovie}
+      />
+
+      {/* Movie Details Popup */}
       <MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)} />
     </div>
   );
