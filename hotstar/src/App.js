@@ -23,7 +23,7 @@ function App() {
       />
 
       <Row
-        title="Upcoming"
+        title="Upcoming Movies"
         fetchUrl={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}`}
       />
     </div>
