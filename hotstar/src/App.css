@@ -9,3 +9,20 @@ body {
   background-color: #000;
   color: white;
 }
+
+/* ------------------------------
+   Responsive Styling
+   ------------------------------ */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px;
+  }
+
+  .banner-title {
+    font-size: 28px;
+  }
+
+  .poster {
+    width: 120px;
+  }
+}
