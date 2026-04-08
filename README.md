@@ -2,7 +2,7 @@
 Deployed a production grade application
 
 Project Summary:
-Implemented an end‑to‑end DevSecOps pipeline to automate the build, security scanning, containerization, deployment, and monitoring of a React‑based Netflix/Hotstar‑style web application. Built a fully automated workflow integrating CI/CD, security tools, Docker image management, Kubernetes deployment, and observability.
+Implemented an end‑to‑end DevSecOps pipeline to automate the build, security scanning, containerization, deployment, and monitoring of a React‑based Hotstar‑style web application. Built a fully automated workflow integrating CI/CD, security tools, Docker image management, Kubernetes deployment, and observability.
 Key Highlights:
 
 
