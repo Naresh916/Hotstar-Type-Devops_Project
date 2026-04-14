@@ -33,6 +33,7 @@ function App() {
   return (
     <div className="app">
       <Navbar onSearch={handleSearch} />
+      <SearchBar onSearch={handleSearch} />
       <Banner apiKey={API_KEY} onMovieClick={setSelectedMovie} />
 
       {/* Category pills */}
