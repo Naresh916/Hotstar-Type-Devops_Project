@@ -48,7 +48,7 @@ pipeline {
                         ${SCANNER_HOME}/bin/sonar-scanner \
                         -Dsonar.projectName=hotstar \
                         -Dsonar.projectKey=hotstar
-                        -Dsonar.projectVersion=${BUILD_NUMBER
+                        -Dsonar.projectVersion=${BUILD_NUMBER}
                     """
                 }
             }
