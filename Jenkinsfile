@@ -5,6 +5,7 @@ pipeline {
         disableConcurrentBuilds()
         skipDefaultCheckout()
         durabilityHint('PERFORMANCE_OPTIMIZED')
+        timeout(time: 1, unit: 'HOURS')
     }
 
     tools {
@@ -68,7 +69,7 @@ pipeline {
                     sh '''
                         pwd
                         ls -la
-                        npm install
+                        npm ci
                     '''
                 }
             }
@@ -77,7 +78,7 @@ pipeline {
         stage('TRIVY FS Scan') {
             steps {
                 dir('hotstar') {
-                    sh 'trivy fs . > trivyfs.txt'
+                    sh "trivy image --severity CRITICAL --exit-code 1 ${IMAGE_NAME}:${BUILD_NUMBER} > trivyimage.txt"
                 }
             }
         }
@@ -135,7 +136,12 @@ pipeline {
         }
 
         success {
-            echo "✅ Pipeline succeeded! Image ${IMAGE_NAME}:${BUILD_NUMBER} deployed."
+            echo "Pipeline succeeded! Image ${IMAGE_NAME}:${BUILD_NUMBER} deployed."
+            emailext(
+                subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "Image ${IMAGE_NAME}:${BUILD_NUMBER} deployed successfully.\nBuild URL: ${env.BUILD_URL}",
+                to: 'nareshtullibilli666@gmail.com'
+            )
         }
 
         failure {
